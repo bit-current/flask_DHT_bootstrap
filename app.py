@@ -24,7 +24,7 @@ def return_dht():
         getattr(app,'public_ip')
     except AttributeError: #to set the public IP for the first time
         app.public_ip = get_public_ip()
-    multiaddr = f"/ipv4/{app.public_ip}/tcp/{app.dht_serve_port}/p2p/{p2p_key}"
+    multiaddr = f"/ip4/{app.public_ip}/tcp/{app.dht_serve_port}/p2p/{p2p_key}"
     return multiaddr
 
 # Check if the script is run directly (not imported)
