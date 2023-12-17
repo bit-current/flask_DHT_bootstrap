@@ -34,6 +34,7 @@ if __name__ == '__main__':
     parser.add_argument('--flask_serve_port', type=int, default=5000, help='Port to run the Flask server on')
     # Custom placeholders for arguments
     parser.add_argument('--dht_serve_port', type=int, default=5001, help='Port to run the DHT server on')
+    parser.add_argument('--host', type=str, default=5001, help='IP to host on')
 
     # Parse the arguments
     args = parser.parse_args()
@@ -41,4 +42,4 @@ if __name__ == '__main__':
     app.dht_serve_port = args.dht_serve_port
 
     # Run the Flask app on the specified port
-    app.run(debug=True, port=args.flask_serve_port)
+    app.run(host=args.host, debug=True, port=args.flask_serve_port)
