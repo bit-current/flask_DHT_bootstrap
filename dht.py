@@ -17,7 +17,10 @@ class DHTSingleton:
         if cls._instance is None: #TODO allow for port change without restart by checking for new port number
             cls._instance = super(DHTSingleton, cls).__new__(cls)
             cls._instance.dht = DHT(
-                host_maddrs=[f"/ip4/0.0.0.0/tcp/{dht_port}"],
+                host_maddrs=[f"/ip4/0.0.0.0/tcp/{dht_port}",
+                            f"/ip4/{get_public_ip()}/tcp/{dht_port}"],
+                announce_maddrs = [f"/ip4/0.0.0.0/tcp/{dht_port}",
+                            f"/ip4/{get_public_ip()}/tcp/{dht_port}"],
                 start=True)  # Example data store
         return cls._instance
 
