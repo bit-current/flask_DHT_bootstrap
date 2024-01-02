@@ -18,9 +18,9 @@ class DHTSingleton:
             cls._instance = super(DHTSingleton, cls).__new__(cls)
             cls._instance.dht = DHT(
                 host_maddrs=[f"/ip4/0.0.0.0/tcp/{dht_port}",
-                            f"/ip4/{get_public_ip()}/tcp/{dht_port}"],
+                            f"/ip4/{cls.get_public_ip()}/tcp/{dht_port}"],
                 announce_maddrs = [f"/ip4/0.0.0.0/tcp/{dht_port}",
-                            f"/ip4/{get_public_ip()}/tcp/{dht_port}"],
+                            f"/ip4/{cls.get_public_ip()}/tcp/{dht_port}"],
                 start=True)  # Example data store
         return cls._instance
 
